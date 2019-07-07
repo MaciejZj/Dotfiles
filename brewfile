@@ -1,10 +1,11 @@
 brew "git"
 brew "tree"
 brew "vim"
+brew "tmux"
 brew "zsh"
 brew "zsh-syntax-highlighting"
 brew "zsh-autosuggestions"
-brew "aria2
+brew "aria2"
 brew "ctags"
 brew "gnuplot"
 brew "wakeonlan"

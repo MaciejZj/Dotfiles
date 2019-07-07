@@ -3,7 +3,12 @@
 # stored in home dir, if in the future there are any that should be stored
 # in .config folder this requires modification.
 
+GREEN="\033[1;32m"
+RED="\033[1;31m"
+BLUE="\033[1m\033[34m"
+NOCOLOR="\033[0m"
 # Grab all dotfiles in this folder
+echo "Deploying dotfiles"
 dotfiles=`ls -a | egrep "^\.\w+" | egrep -v "git"`
 
 # Link dotfiles to home dir
@@ -14,18 +19,18 @@ done
 # Dectect if system is Mac
 case $OSTYPE in
 darwin*)
-	echo "MacOS system detected"
+	echo "${GREEN}MacOS detected${NOCOLOR}"
 
 	# Install homebrew
-	echo "\033[1m\033[34m==> Installing brew\033[0m"
+	echo "${BLUE}==> Installing brew${NOCOLOR}"
 	if ! [ -x "`command -v brew`" ]; then   
 		/usr/bin/ruby -e "`curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install`"
 	else
-		echo "Brew installed already, skipping"
+		echo "Homebrew installed already, skipping"
 	fi
 	
 	# Install homebrew programs from brewfile
-	echo "\033[1m\033[34m==> Installing brew formulas\033[0m"
+	echo "${BLUE}==> Installing brew formulas${NOCOLOR}"
 	brew bundle --file=${PWD}/brewfile
 	;;
 linux-gnu)
@@ -36,9 +41,28 @@ linux-gnu)
 	exit 1
 esac
 
+echo "${BLUE}==> Installing bigger${NOCOLOR}"
 # Install Bigger
-curl https://github.com/MaciejZj/Bigger/blob/master/bigger.py > \usr\local\bin\bigger.py
+curl https://github.com/MaciejZj/Bigger/blob/master/bigger.py > /usr/local/bin/bigger.py
 # Install Vundle vim plugin manager
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall 
+echo "${BLUE}==> Installing vundle${NOCOLOR}"
+if ! [ -d ~/.vim/bundle/Vundle.vim ]; then
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	echo "${GREEN}Vundle installed successfully${NOCOLOR}"
+else
+	echo "Vundle already installed, skipping"
+fi
+
+echo "${BLUE}==> Installing vim plugins${NOCOLOR}"
+vim +PluginInstall +qall
+
+echo "${BLUE}==> Installing tmux-themepack${NOCOLOR}"
+if ! [ -d ~/.tmux-themepack ]; then
+	git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
+	echo "${GREEN}Tmux-themepack installed successfully${NOCOLOR}"
+else
+	echo "Tmux-themepack already installed, skipping"
+fi
+
+echo "${GREEN}Config succedeed${NOCOLOR}"
 
