@@ -11,7 +11,7 @@ Zsh plugins:
   * [pure prompt](https://github.com/sindresorhus/pure)
   * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
   * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-  
+
 Vim pugins:
   * [dim colorscheme](https://github.com/jeffkreeftmeijer/vim-dim)
   * [lightline](https://github.com/itchyny/lightline.vim) (planning to make colors consistent)
