@@ -40,7 +40,3 @@ alias sc='bigger.py c'
 alias ss='bigger.py s'
 alias sm='bigger.py m'
 alias sb='bigger.py b'
-# Alias for waking home pc
-alias wmpc='wakeonlan -i 192.168.1.255 -p 1234 6C:62:6D:5A:40:2E'
-# Alias for ctags generation
-alias ctags="`brew --prefix`/bin/ctags"
