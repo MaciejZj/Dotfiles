@@ -78,7 +78,6 @@ highlight GitGutterAdd ctermfg=2
 highlight GitGutterChange ctermfg=3
 highlight GitGutterDelete ctermfg=1
 
-
 " Rainbow parentheses plugin
 " Enable
 let g:rainbow_active = 1
@@ -90,3 +89,4 @@ let g:rainbow_conf = {
 let g:lightline = {
 \   'colorscheme': 'one'
 \ }
+
