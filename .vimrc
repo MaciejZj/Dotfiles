@@ -28,7 +28,7 @@ set ruler
 " Enable use of the mouse for all modes
 set mouse=a
 " Nicer border in splitview
-set fillchars+=vert:\ 
+set fillchars+=vert:\
 
 " Searching highlight colors
 set hlsearch
@@ -73,6 +73,11 @@ set laststatus=2
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 set updatetime=250
+" Ensure gitguter has proper colors
+highlight GitGutterAdd ctermfg=2
+highlight GitGutterChange ctermfg=3
+highlight GitGutterDelete ctermfg=1
+
 
 " Rainbow parentheses plugin
 " Enable
@@ -85,4 +90,3 @@ let g:rainbow_conf = {
 let g:lightline = {
 \   'colorscheme': 'one'
 \ }
-
