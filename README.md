@@ -5,7 +5,6 @@ My config with a simple installation script.
 
 Primarily focused around zsh, tmux and vim.
 Autodeploying on MacOS with apps installation, planning to add Debian and Arch support to the installation script.
-May add tmux config at some time.
 
 Zsh plugins:
   * [pure prompt](https://github.com/sindresorhus/pure)
