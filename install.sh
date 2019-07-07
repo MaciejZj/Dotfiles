@@ -43,7 +43,7 @@ esac
 
 echo "${BLUE}==> Installing bigger${NOCOLOR}"
 # Install Bigger
-curl https://github.com/MaciejZj/Bigger/blob/master/bigger.py > /usr/local/bin/bigger.py
+curl https://raw.githubusercontent.com/MaciejZj/Bigger/master/bigger.py > /usr/local/bin/bigger.py
 # Install Vundle vim plugin manager
 echo "${BLUE}==> Installing vundle${NOCOLOR}"
 if ! [ -d ~/.vim/bundle/Vundle.vim ]; then
