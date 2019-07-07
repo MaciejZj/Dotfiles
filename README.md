@@ -3,7 +3,7 @@ My config with a simple installation script.
 
 ![demo_screenshot](https://i.imgur.com/rtDYe2k.png)
 
-Primarly foucsed around zsh and vim.
+Primarily focused around zsh, tmux and vim.
 Autodeploying on MacOS with apps installation, planning to add Debian and Arch support to the installation script.
 May add tmux config at some time.
 
