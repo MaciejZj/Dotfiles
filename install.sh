@@ -24,7 +24,7 @@ darwin*)
 
 	# Install homebrew
 	echo -e "${BLUE}==> Installing brew${NOCOLOR}"
-	if ! [ -x "`command -v brew`" ]; then   
+	if ! [ -x "`command -v brew`" ]; then
 		/usr/bin/ruby -e "`curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install`"
 		if [ $? -ne 0 ]; then
 			echo -e "${RED}Failed to install homebrew, config install abandoned${NOCOLOR}"
@@ -43,7 +43,6 @@ darwin*)
 	if [ $? -ne 0 ]; then
 		echo -e "${RED}Failed to install bigger, config will proceed${NOCOLOR}"
 	fi
-	break
 	;;
 linux-gnu)
 	echo -e "${GREEN}Linux detected${NOCOLOR}"
@@ -108,9 +107,11 @@ else
 	echo "Vundle already installed, skipping"
 fi
 
+# Install vim
 echo -e "${BLUE}==> Installing vim plugins${NOCOLOR}"
 vim +PluginInstall +qall
 
+# Install tmux
 echo -e "${BLUE}==> Installing tmux-themepack${NOCOLOR}"
 if ! [ -d ~/.tmux-themepack ]; then
 	git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
@@ -123,4 +124,3 @@ else
 fi
 
 echo -e "${GREEN}Config finished${NOCOLOR}"
-
