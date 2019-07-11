@@ -4,7 +4,7 @@ My config with a simple installation script.
 ![demo_screenshot](https://i.imgur.com/Iw3fkBN.png)
 
 Primarily focused around zsh, tmux and vim.
-Autodeploying on MacOS with apps installation, planning to add Debian and Arch support to the installation script.
+Autodeploying on MacOS and Ubuntu with apps installation, planning to add Arch support to the installation script.
 Crafted to make terminal apps use 16 ANSI colors, so the theme stays consistent and is easy to modify from one place.
 
 Zsh plugins:
