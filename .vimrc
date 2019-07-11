@@ -28,7 +28,7 @@ set ruler
 " Enable use of the mouse for all modes
 set mouse=a
 " Nicer border in splitview
-set fillchars+=vert:\
+set fillchars+=vert:\  
 
 " Searching highlight colors
 set hlsearch
@@ -52,11 +52,12 @@ call vundle#begin()               " required
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'itchyny/lightline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'luochen1990/rainbow'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'jeffkreeftmeijer/vim-dim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()                 " required
 filetype plugin indent on         " required
@@ -86,7 +87,7 @@ let g:rainbow_conf = {
 \	'ctermfgs': ['green', 'yellow', 'cyan', 'magenta', 'red'],
 \}
 
-let g:lightline = {
-\   'colorscheme': 'one'
-\ }
+" Set list of enabled airline extensions
+let g:airline_extensions = []
+let g:airline_theme = 'clear_dim'
 
