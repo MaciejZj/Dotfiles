@@ -110,6 +110,8 @@ fi
 # Install vim
 echo -e "${BLUE}==> Installing vim plugins${NOCOLOR}"
 vim +PluginInstall +qall
+# Copy my airline theme to themes dir
+cp -f clear_dim.vim ~/.vim/bundle/vim-airline-themes/autoload/airline/themes/
 
 # Install tmux
 echo -e "${BLUE}==> Installing tmux-themepack${NOCOLOR}"
