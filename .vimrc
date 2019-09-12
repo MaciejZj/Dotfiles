@@ -1,8 +1,6 @@
 " General
 " Line numbers
 set number
-" Disable vi compatibility
-set nocompatible
 " Use system clipboard
 set clipboard=unnamed
 " Set shell to zsh
@@ -14,8 +12,7 @@ syntax on
 set shiftwidth=4
 set tabstop=4
 set noexpandtab
-set smartindent
-
+set autoindent
 " Make backspace work like most other programs
 set backspace=2 
 " Better command-line completion
