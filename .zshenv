@@ -2,6 +2,12 @@
 # Language
 export LANG=en_US.UTF-8
 
+# Set history length
+HISTFILE=~/.zhistory
+HISTSIZE=SAVEHIST=1000
+setopt sharehistory
+setopt extendedhistory
+
 # Colors
 # To generate colors see: https://geoff.greer.fm/lscolors/
 # Colors for BSD programs
@@ -40,3 +46,4 @@ alias sc='bigger.py c'
 alias ss='bigger.py s'
 alias sm='bigger.py m'
 alias sb='bigger.py b'
+

@@ -82,6 +82,10 @@ linux-gnu)
 	;;
 esac
 
+# Install pip
+echo -e "${BLUE}==> Installing pip${NOCOLOR}"
+python get-pip.py
+
 # Install zsh prompt
 echo -e "${BLUE}==> Installing pure prompt${NOCOLOR}"
 sudo curl -fsSLo /usr/local/share/zsh/site-functions/prompt_pure_setup "https://raw.githubusercontent.com/sindresorhus/pure/master/pure.zsh"
@@ -124,5 +128,9 @@ if ! [ -d ~/.tmux-themepack ]; then
 else
 	echo "Tmux-themepack already installed, skipping"
 fi
+
+# Install compiledb (json compilatrion database generator)
+echo -e "${BLUE}==> Installing compiledb${NOCOLOR}"
+pip install compiledb
 
 echo -e "${GREEN}Config finished${NOCOLOR}"
