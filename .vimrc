@@ -58,6 +58,8 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'jeffkreeftmeijer/vim-dim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'rhysd/vim-clang-format'
 
 call vundle#end()                 " required
 filetype plugin indent on         " required
@@ -91,3 +93,8 @@ let g:rainbow_conf = {
 let g:airline_extensions = []
 let g:airline_theme = 'clear_dim'
 
+" Disable error highlighting in YCM
+let g:ycm_enable_diagnostic_highlighting = 0
+
+" let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
+let g:ycm_confirm_extra_conf = 0
