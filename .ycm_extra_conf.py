@@ -5,36 +5,42 @@ import logging
 import ycm_core
 import re
 
-BASE_FLAGS = [
+C_BASE_FLAGS = [
         '-Wall',
         '-Wextra',
-        '-Wshadow', # warn the user if a variable declaration shadows one from a
-                    # parent context
-        '-Wnon-virtual-dtor', # warn the user if a class with virtual functions has a
-                              # non-virtual destructor. This helps catch hard to
-                              # track down memory errors
-        '-Wold-style-cast', # warn for c-style casts
-        '-Wcast-align', # warn for potential performance problem casts
-        '-Wunused', # warn on anything being unused
-        '-Woverloaded-virtual', # warn if you overload (not override) a virtual
-                                # function
-        '-Wpedantic', # warn if non-standard C++ is used
-        '-Wconversion', # warn on type conversions that may lose data
-        '-Wsign-conversion', # warn on sign conversions
-        '-Wnull-dereference', # warn if a null dereference is detected
-        '-Wdouble-promotion', # warn if float is implicit promoted to double
+        '-Werror',
+        '-Wno-long-long',
+        '-Wno-variadic-macros',
+        '-fexceptions',
+        '-ferror-limit=10000',
         '-DNDEBUG',
-        '-std=c++17',
+        '-std=c11',
+        '-I/usr/lib/',
+        '-I/usr/include/'
+        ]
+
+CPP_BASE_FLAGS = [
+        '-Wall',
+        '-Wextra',
+        '-Wno-long-long',
+        '-Wno-variadic-macros',
+        '-fexceptions',
+        '-ferror-limit=10000',
+        '-DNDEBUG',
+        '-std=c++1z',
         '-xc++',
         '-I/usr/lib/',
         '-I/usr/include/'
         ]
 
-SOURCE_EXTENSIONS = [
+C_SOURCE_EXTENSIONS = [
+        '.c'
+        ]
+
+CPP_SOURCE_EXTENSIONS = [
         '.cpp',
         '.cxx',
         '.cc',
-        '.c',
         '.m',
         '.mm'
         ]
@@ -55,6 +61,12 @@ HEADER_DIRECTORIES = [
         'include'
         ]
 
+BUILD_DIRECTORY = 'build';
+
+def IsSourceFile(filename):
+    extension = os.path.splitext(filename)[1]
+    return extension in C_SOURCE_EXTENSIONS + CPP_SOURCE_EXTENSIONS
+
 def IsHeaderFile(filename):
     extension = os.path.splitext(filename)[1]
     return extension in HEADER_EXTENSIONS
@@ -62,7 +74,7 @@ def IsHeaderFile(filename):
 def GetCompilationInfoForFile(database, filename):
     if IsHeaderFile(filename):
         basename = os.path.splitext(filename)[0]
-        for extension in SOURCE_EXTENSIONS:
+        for extension in C_SOURCE_EXTENSIONS + CPP_SOURCE_EXTENSIONS:
             # Get info from the source files by replacing the extension.
             replacement_file = basename + extension
             if os.path.exists(replacement_file):
@@ -80,7 +92,7 @@ def GetCompilationInfoForFile(database, filename):
         return None
     return database.GetCompilationInfoForFile(filename)
 
-def FindNearest(path, target, build_folder):
+def FindNearest(path, target, build_folder=None):
     candidate = os.path.join(path, target)
     if(os.path.isfile(candidate) or os.path.isdir(candidate)):
         logging.info("Found nearest " + target + " at " + candidate)
@@ -151,7 +163,7 @@ def FlagsForCompilationDatabase(root, filename):
     try:
         # Last argument of next function is the name of the build folder for
         # out of source projects
-        compilation_db_path = FindNearest(root, 'compile_commands.json', 'build')
+        compilation_db_path = FindNearest(root, 'compile_commands.json', BUILD_DIRECTORY)
         compilation_db_dir = os.path.dirname(compilation_db_path)
         logging.info("Set compilation database directory to " + compilation_db_dir)
         compilation_db =  ycm_core.CompilationDatabase(compilation_db_dir)
@@ -169,12 +181,19 @@ def FlagsForCompilationDatabase(root, filename):
         return None
 
 def FlagsForFile(filename):
+    final_flags = []
     root = os.path.realpath(filename);
     compilation_db_flags = FlagsForCompilationDatabase(root, filename)
     if compilation_db_flags:
         final_flags = compilation_db_flags
     else:
-        final_flags = BASE_FLAGS
+        if IsSourceFile(filename):
+            extension = os.path.splitext(filename)[1]
+            if extension in C_SOURCE_EXTENSIONS:
+                final_flags = C_BASE_FLAGS
+            else:
+                final_flags = CPP_BASE_FLAGS
+
         clang_flags = FlagsForClangComplete(root)
         if clang_flags:
             final_flags = final_flags + clang_flags
@@ -185,4 +204,3 @@ def FlagsForFile(filename):
             'flags': final_flags,
             'do_cache': True
             }
-
