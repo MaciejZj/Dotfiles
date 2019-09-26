@@ -43,6 +43,9 @@ darwin*)
 	if [ $? -ne 0 ]; then
 		echo -e "${RED}Failed to install bigger, config will proceed${NOCOLOR}"
 	fi
+
+	# Change shell to zsh
+	chsh -s /bin/zsh
 	;;
 linux-gnu)
 	echo -e "${GREEN}Linux detected${NOCOLOR}"
