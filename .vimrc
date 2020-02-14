@@ -14,7 +14,7 @@ set tabstop=4
 set noexpandtab
 set autoindent
 " Make backspace work like most other programs
-set backspace=2 
+set backspace=2
 " Better command-line completion
 set wildmenu
 " Show partial commands in the last line of the screen
@@ -22,29 +22,20 @@ set showcmd
 " Display the cursor position on the last line of the screen or in the status
 " line of a window
 set ruler
-" Enable use of the mouse for all modes
-set mouse=a
 " Nicer border in splitview
-set fillchars+=vert:\  
+set fillchars+=vert:\ 
 
 " Searching highlight colors
 set hlsearch
 hi Search ctermbg=Yellow
 hi Search ctermfg=Black
 
-" Autocompletion
-" make vim suggest longest completion first
-:set completeopt=longest,menuone
-
-" Map quick doubletype j esc
-imap jj <Esc>
-
 " Turn line numbers color to grey
 highlight LineNr ctermfg=grey
 
 " Vunlde plugins
 set rtp+=~/.vim/bundle/Vundle.vim " required
-call vundle#begin()               " required
+call vundle#begin() " required
 
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -52,14 +43,37 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'luochen1990/rainbow'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'jeffkreeftmeijer/vim-dim'
+"Plugin 'jeffkreeftmeijer/vim-dim'
+Plugin 'MaciejZj/vim-airline-dim'
+Plugin 'MaciejZj/vim-dim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ycm-core/YouCompleteMe'
-Plugin 'rhysd/vim-clang-format'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'mattn/vim-lsp-settings'
+Plugin 'liuchengxu/vista.vim'
+Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
+Plugin 'wincent/terminus'
 
 call vundle#end()                 " required
 filetype plugin indent on         " required
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+imap <c-space> <Plugin>(asyncomplete_force_refresh)
+
+noremap <space> :Commands<cr>
+
+let g:lsp_diagnostics_enabled = 0
+
+let g:vista_default_executive = 'vim_lsp'
+let g:vista_ignore_kinds = ['Variable']
+
+set cinoptions+=L0
 
 " Enable default colorscheme in ANSI colors mode
 colorscheme dim
@@ -67,7 +81,6 @@ colorscheme dim
 " Airline plugin
 " Tweak to make airline work
 set laststatus=2
-" Colorscheme
 
 " Enable gitguter realtime upadating
 let g:gitgutter_realtime = 1
@@ -87,11 +100,27 @@ let g:rainbow_conf = {
 \}
 
 " Set list of enabled airline extensions
-let g:airline_extensions = []
-let g:airline_theme = 'clear_dim'
+"let g:airline_extensions = []
+let g:airline_theme='clear_dim'
 
-" Disable error highlighting in YCM
-let g:ycm_enable_diagnostic_highlighting = 0
-" Disable conf confirmation prompt in YCM
-let g:ycm_confirm_extra_conf = 0
+autocmd BufEnter * set mouse=
 
+let s:saved_theme = []
+
+" Make terminal in vim follow main airlin theme
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! AirlineThemePatch(palette)
+    for colors in values(a:palette)
+        if has_key(colors, 'airline_c') && len(s:saved_theme) ==# 0
+            let s:saved_theme = colors.airline_c
+        endif
+        if has_key(colors, 'airline_term')
+            let colors.airline_term = s:saved_theme
+        endif
+    endfor
+endfunction
+
+nnoremap <C-^I> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i

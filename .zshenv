@@ -47,3 +47,4 @@ alias ss='bigger.py s'
 alias sm='bigger.py m'
 alias sb='bigger.py b'
 
+alias fzf='fzf --color=16'

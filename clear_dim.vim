@@ -14,7 +14,6 @@ let s:magentab = ['13', '#ffffff']
 let s:cyan = ['6', '#ffffff']
 let s:cyanb = ['14', '#ffffff']
 let s:white = ['7', '#ffffff']
-let s:whiteb = ['15', '#ffffff']
 
 " Normal mode
 let s:N1 = [s:green[1], s:black[1], s:green[0], s:black[0]]
@@ -68,6 +67,14 @@ let g:airline#themes#clear_dim#palette.normal = {
     \ 'airline_y': s:N3,
     \ 'airline_z': s:N3}
 
+let g:airline#themes#clear_dim#palette.airline_term = {
+    \ 'airline_a': s:N1,
+    \ 'airline_b': s:N3,
+    \ 'airline_c': s:N3,
+    \ 'airline_x': s:N3,
+    \ 'airline_y': s:N3,
+    \ 'airline_z': s:N3}
+
 let g:airline#themes#clear_dim#palette.normal_modified = {
     \ 'airline_a': s:NM1,
     \ 'airline_b': s:N3,
@@ -94,13 +101,6 @@ let g:airline#themes#clear_dim#palette.replace = {
     \ 'airline_z': s:R3}
 let g:airline#themes#clear_dim#palette.replace_modified = {}
 
-let g:airline#themes#clear_dim#palette.visual = {
-    \ 'airline_a': s:V1,
-    \ 'airline_b': s:N3,
-    \ 'airline_c': s:N3,
-    \ 'airline_x': s:N3,
-    \ 'airline_y': s:N3,
-    \ 'airline_z': s:V3}
 let g:airline#themes#clear_dim#palette.visual_modified = {}
 
 let g:airline#themes#clear_dim#palette.normal.airline_warning = s:NM1
