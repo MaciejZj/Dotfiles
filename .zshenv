@@ -27,8 +27,12 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
+# Fzf fuzzy finder defults
+export FZF_DEFAULT_OPTS='--color=16 --reverse --multi 
+--bind "alt-enter:toggle+down,alt-bspace:toggle+up,tab:down,btab:up"'
+
 # Aliases
-# Exa, installed with: brew install exa 
+# Exa, installed with: brew install exa
 alias l='exa'
 alias la='exa -a'
 alias ll='exa --long --group --git'
@@ -47,4 +51,3 @@ alias ss='bigger.py s'
 alias sm='bigger.py m'
 alias sb='bigger.py b'
 
-alias fzf='fzf --color=16'
