@@ -39,8 +39,6 @@ alias ll='exa --long --group --git'
 alias lla='exa --long --group --git -a'
 # Aliases for ls
 alias ls='ls -h'
-# Aliases for grep
-alias grep='grep --color=auto'
 # Aliases for cp and mv
 # Prompt for confirmation when overwriting files
 alias cp='cp -i'

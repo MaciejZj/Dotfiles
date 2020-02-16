@@ -2,7 +2,7 @@
 # Dont require typing cd
 setopt auto_cd
 # Enable command autocorrection
-ENABLE_CORRECTIO="true"
+setopt correct
 
 # History of visited directoties
 # Extend dir stack size
@@ -28,12 +28,6 @@ autoload -Uz compinit
 compinit
 # When completion is loading show dots
 COMPLETION_WAITING_DOTS="true"
-
-# Aliases
-# Alias for waking home pc
-alias wmpc='wakeonlan -i 192.168.1.255 -p 1234 6C:62:6D:5A:40:2E'
-# Alias for ctags generation
-alias ctags="`brew --prefix`/bin/ctags"
 
 # Plugins
 # Prompt theme Pure, installed from: https://github.com/sindresorhus/pure
