@@ -46,7 +46,6 @@ map ]] j0[[%/{<CR>
 map [] $][%?}<CR>
 
 call plug#begin('~/.vim/plugged')
-
 Plug 'wincent/terminus'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf'
@@ -123,6 +122,12 @@ let g:vista_executive_for = {
 let g:lsp_diagnostics_enabled = 0
 let g:vista_ignore_kinds = ['Variable']
 
-" Disble mouse from plugins and in general
+
+" Enformce tab length for sleuth plugin
+set tabstop=4
+
+" Disable some terminus features and mouse support
 let g:TerminusMouse = 0
+let g:TerminusFocusReporting=0
+let g:TerminusBracketedPaste=0
 set mouse=
