@@ -49,3 +49,5 @@ alias ss='bigger.py s'
 alias sm='bigger.py m'
 alias sb='bigger.py b'
 
+alias python='python3'
+alias pip='pip3'
