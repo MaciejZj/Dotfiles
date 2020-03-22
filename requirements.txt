@@ -1,0 +1,10 @@
+argparse
+compiledb
+matplotlib
+numpy
+pandas
+pytest
+scikit-image
+scikit-learn
+venv
+wheel
