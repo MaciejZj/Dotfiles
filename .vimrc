@@ -20,9 +20,12 @@ set incsearch
 " Text formatting
 " Set tab len to four
 set tabstop=4
+set shiftwidth=4
+filetype plugin indent on
 " Indentation
 set autoindent
 set smartindent
+set smarttab
 " Enable syntax highlighting
 syntax on
 " Make backspace work like most other programs
@@ -46,6 +49,7 @@ map ]] j0[[%/{<CR>
 map [] $][%?}<CR>
 
 call plug#begin('~/.vim/plugged')
+
 Plug 'wincent/terminus'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf'
@@ -128,6 +132,8 @@ set tabstop=4
 
 " Disable some terminus features and mouse support
 let g:TerminusMouse = 0
-let g:TerminusFocusReporting=0
-let g:TerminusBracketedPaste=0
+let g:TerminusFocusReporting = 0
+let g:TerminusBracketedPaste = 0
 set mouse=
+
+let g:netrw_banner = 0
