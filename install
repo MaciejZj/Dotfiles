@@ -32,20 +32,19 @@ darwin*)
 	else
 		echo "Homebrew installed already, skipping"
 	fi
-	
+
 	# Install homebrew programs from brewfile
 	echo -e "${BLUE}==> Installing brew formulas${NOCOLOR}"
 	brew bundle --file=${PWD}/brewfile
 
 	echo -e "${BLUE}==> Installing bigger${NOCOLOR}"
 	# Install Bigger
-	curl -fsSL https://raw.githubusercontent.com/MaciejZj/Bigger/master/bigger.py > /usr/local/bin/bigger.py
+	curl -fsSL https://raw.githubusercontent.com/maciejzj/bigger/master/bigger.py > ./bigger.py \
+		&& sudo install ./bigger.py /usr/local/bin && rm ./bigger.py
+
 	if [ $? -ne 0 ]; then
 		echo -e "${RED}Failed to install bigger, config will proceed${NOCOLOR}"
 	fi
-
-	# Change shell to zsh
-	chsh -s /bin/zsh
 	;;
 linux-gnu)
 	echo -e "${GREEN}Linux detected${NOCOLOR}"
@@ -102,21 +101,22 @@ fi
 
 # Install Vundle vim plugin manager
 # Vundle doesnt need reinstall prompt since it updates itself with vim
-echo -e "${BLUE}==> Installing vundle${NOCOLOR}"
-if ! [ -d ~/.vim/bundle/Vundle.vim ]; then
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+echo -e "${BLUE}==> Installing plug{NOCOLOR}"
+if ! [ -d ~/.vim/plugged ]; then
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	if [ $? -ne 0 ]; then
-		echo -e "${RED}Failed to install vundle, config install abandoned${NOCOLOR}"
+		echo -e "${RED}Failed to install plug, config install abandoned${NOCOLOR}"
 		exit 1
 	fi
-	echo -e "${GREEN}Vundle installed successfully${NOCOLOR}"
+	echo -e "${GREEN}Plug installed successfully${NOCOLOR}"
 else
-	echo "Vundle already installed, skipping"
+	echo "Plug already installed, skipping"
 fi
 
 # Install vim
 echo -e "${BLUE}==> Installing vim plugins${NOCOLOR}"
-vim +PluginInstall +qall
+vim +PlugInstall +qall
 # Copy my airline theme to themes dir
 cp -f clear_dim.vim ~/.vim/plugged/vim-airline-themes/autoload/airline/themes/
 
@@ -132,8 +132,10 @@ else
 	echo "Tmux-themepack already installed, skipping"
 fi
 
-# Install compiledb (json compilatrion database generator)
-echo -e "${BLUE}==> Installing compiledb${NOCOLOR}"
-pip install compiledb
+echo -e "${BLUE}==> Installing fzf shell extensions${NOCOLOR}"
+yes | /usr/local/opt/fzf/install
+
+echo -e "${BLUE}==> Installing pip packages${NOCOLOR}"
+pip3 install -r requirements.txt
 
 echo -e "${GREEN}Config finished${NOCOLOR}"
