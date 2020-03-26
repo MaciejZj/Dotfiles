@@ -26,6 +26,8 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
+# Disable less history
+export LESSHISTFILE=/dev/null
 
 # Fzf fuzzy finder defults
 export FZF_DEFAULT_OPTS='--color=16 --reverse --multi 
@@ -33,10 +35,10 @@ export FZF_DEFAULT_OPTS='--color=16 --reverse --multi
 
 # Aliases
 # Exa, installed with: brew install exa
-alias l='exa'
-alias la='exa -a'
-alias ll='exa --long --group --git'
-alias lla='exa --long --group --git -a'
+alias l='exa --icons'
+alias la='exa --icons -a'
+alias ll='exa --long --group --git --icons'
+alias lla='exa --long --group --git --icons -a'
 # Aliases for ls
 alias ls='ls -h'
 # Aliases for cp and mv

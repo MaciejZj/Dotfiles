@@ -116,19 +116,17 @@ nnoremap <space> :Commands<cr>
 " Autocompletion and lsp
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 imap <c-space> <Plug>(asyncomplete_force_refresh)
 
+" LSP and Vista config
+let g:lsp_diagnostics_enabled = 0
 let g:vista_executive_for = {
 	\ 'cpp': 'vim_lsp',
 	\ 'python': 'vim_lsp',
 	\ }
-let g:lsp_diagnostics_enabled = 0
 let g:vista_ignore_kinds = ['Variable']
-
-
-" Enformce tab length for sleuth plugin
-set tabstop=4
+let g:airline#extensions#vista#enabled = '0'
 
 " Disable some terminus features and mouse support
 let g:TerminusMouse = 0
@@ -136,4 +134,5 @@ let g:TerminusFocusReporting = 0
 let g:TerminusBracketedPaste = 0
 set mouse=
 
+" Disable file explorer banner
 let g:netrw_banner = 0
