@@ -4,7 +4,7 @@ set number
 " Use system clipboard
 set clipboard=unnamed
 " Set shell to zsh
-set shell=/bin/zsh	
+set shell=/bin/zsh
 " Force vim to use 16 ANSI colors
 set t_Co=16
 " Default split direction
@@ -21,8 +21,8 @@ set incsearch
 " Set tab len to four
 set tabstop=4
 set shiftwidth=4
-filetype plugin indent on
 " Indentation
+filetype plugin indent on
 set autoindent
 set smartindent
 set smarttab
@@ -39,8 +39,7 @@ set showcmd
 set ruler
 " Nicer border in splitview
 set fillchars+=vert:\ 
-" Don't align goto tags in C like languages
-set cinoptions+=L0
+" Don't align goto tags in C like languages set cinoptions+=L0
 
 " Use [[ and ]] with 'inline' braces
 map [[ ?{<CR>w99[{
@@ -48,27 +47,27 @@ map ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
 map [] $][%?}<CR>
 
+" Plug plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'wincent/terminus'
-Plug 'junegunn/goyo.vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-sleuth'
-Plug 'chaoren/vim-wordmotion'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'MaciejZj/vim-dim'
+Plug 'junegunn/goyo.vim'
+Plug 'liuchengxu/vista.vim'
 Plug 'luochen1990/rainbow'
+Plug 'maciejzj/vim-dim'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'sheerun/vim-polyglot'
-Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/vim-lsp'
+Plug 'wincent/terminus'
 Plug 'mattn/vim-lsp-settings'
-Plug 'liuchengxu/vista.vim'
 
 call plug#end()
 
