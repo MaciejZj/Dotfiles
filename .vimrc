@@ -39,13 +39,18 @@ set showcmd
 set ruler
 " Nicer border in splitview
 set fillchars+=vert:\ 
-" Don't align goto tags in C like languages set cinoptions+=L0
+" Don't align goto tags in C like languages
+set cinoptions+=L0
 
 " Use [[ and ]] with 'inline' braces
 map [[ ?{<CR>w99[{
 map ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
 map [] $][%?}<CR>
+
+" Highlight character exceeding 80 columns
+highlight ColorColumn ctermbg=yellow
+call matchadd('ColorColumn', '\%81v\S', 100)
 
 " Plug plugins
 call plug#begin('~/.vim/plugged')
