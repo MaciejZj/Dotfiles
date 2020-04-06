@@ -1,6 +1,7 @@
 brew "aria2"
 brew "cmake"
 brew "doxygen"
+brew "entr"
 brew "exa"
 brew "ffmpeg"
 brew "fzf"

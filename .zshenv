@@ -37,6 +37,7 @@ export FZF_DEFAULT_OPTS='--color=16 --reverse --multi
 # Exa, installed with: brew install exa
 alias l='exa --icons'
 alias la='exa --icons -a'
+alias lt='exa --icons --tree'
 alias ll='exa --long --group --git --icons'
 alias lla='exa --long --group --git --icons -a'
 # Aliases for ls
