@@ -60,7 +60,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'liuchengxu/vista.vim'
-Plug 'luochen1990/rainbow'
+Plug 'frazrepo/vim-rainbow'
 Plug 'maciejzj/vim-dim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'prabirshrestha/async.vim'
@@ -105,10 +105,9 @@ let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 set updatetime=250
 
-" Rainbow parentheses plugin let g:rainbow_active = 1
-let g:rainbow_conf = {
-\	'ctermfgs': ['green', 'yellow', 'cyan', 'magenta', 'red'],
-\}
+" Rainbow parentheses plugin
+let g:rainbow_active = 1
+let g:rainbow_ctermfgs = ['green', 'yellow', 'cyan', 'magenta', 'red']
 
 " Disable whitespace errors highlighting in polyglot
 let g:python_highlight_indent_errors = 0
