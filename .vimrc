@@ -16,6 +16,8 @@ set hidden
 set hlsearch
 " Highlight searching while typing
 set incsearch
+" Don't show current mode
+set noshowmode
 
 " Text formatting
 " Set tab len to four
@@ -52,27 +54,35 @@ map [] $][%?}<CR>
 highlight ColorColumn ctermbg=yellow
 call matchadd('ColorColumn', '\%81v\S', 100)
 
+" Enable hybrid line numbers
+:set number relativenumber
+" Relative numbering only in active buffer
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
 " Plug plugins
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'liuchengxu/vista.vim'
-Plug 'frazrepo/vim-rainbow'
-Plug 'maciejzj/vim-dim'
-Plug 'michaeljsmith/vim-indent-object'
+Plug 'junegunn/goyo.vim' " Rather dont't need
+Plug 'liuchengxu/vista.vim' " Dunno if I need this, ok i think I need
+Plug 'frazrepo/vim-rainbow' " Maybe substitute with sth simpler
+Plug 'maciejzj/vim-theme' " Clean up
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-sleuth'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'wincent/terminus'
-Plug 'mattn/vim-lsp-settings'
+Plug 'tpope/vim-sleuth' " Rather will stay
+Plug 'vim-airline/vim-airline' " Remove, I can do my own thing
+Plug 'vim-airline/vim-airline-themes' " Remove
+Plug 'wincent/terminus' " Replace this with lightwieght
+Plug 'mattn/vim-lsp-settings' " Maybe remove one day
 
 call plug#end()
 
@@ -84,14 +94,14 @@ let g:airline_theme='clear_dim'
 let s:saved_theme = []
 let g:airline_theme_patch_func = 'AirlineThemePatch'
 function! AirlineThemePatch(palette)
-	for colors in values(a:palette)
-		if has_key(colors, 'airline_c') && len(s:saved_theme) ==# 0
-			let s:saved_theme = colors.airline_c
-		endif
-		if has_key(colors, 'airline_term')
-			let colors.airline_term = s:saved_theme
-		endif
-	endfor
+  for colors in values(a:palette)
+    if has_key(colors, 'airline_c') && len(s:saved_theme) ==# 0
+      let s:saved_theme = colors.airline_c
+    endif
+    if has_key(colors, 'airline_term')
+      let colors.airline_term = s:saved_theme
+    endif
+  endfor
 endfunction
 
 " Ensure gitguter has proper colors
@@ -100,21 +110,16 @@ highlight GitGutterChange ctermfg=3
 highlight GitGutterDelete ctermfg=1
 highlight SignColumn ctermbg=0
 
-" Enable gitguter realtime upadating
-let g:gitgutter_realtime = 1
-let g:gitgutter_eager = 1
-set updatetime=250
-
 " Rainbow parentheses plugin
 let g:rainbow_active = 1
-let g:rainbow_ctermfgs = ['green', 'yellow', 'cyan', 'magenta', 'red']
+let g:rainbow_ctermfgs = ['green', 'yellow', 'cyan', 'magenta', 'blue', 'red']
 
 " Disable whitespace errors highlighting in polyglot
 let g:python_highlight_indent_errors = 0
 let g:python_highlight_space_errors = 0
 
-" Fuzzy comand finder space shortcut 
-nnoremap <space> :Commands<cr> 
+" Fuzzy comand finder space shortcut
+nnoremap <space> :Commands<cr>
 
 " Autocompletion and lsp
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -125,9 +130,9 @@ imap <c-space> <Plug>(asyncomplete_force_refresh)
 " LSP and Vista config
 let g:lsp_diagnostics_enabled = 0
 let g:vista_executive_for = {
-	\ 'cpp': 'vim_lsp',
-	\ 'python': 'vim_lsp',
-	\ }
+      \ 'cpp': 'vim_lsp',
+      \ 'python': 'vim_lsp',
+      \ }
 let g:vista_ignore_kinds = ['Variable']
 let g:airline#extensions#vista#enabled = '0'
 
@@ -139,3 +144,8 @@ set mouse=
 
 " Disable file explorer banner
 let g:netrw_banner = 0
+" Start netrw with default hide list
+let ghregex='\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_list_hide=ghregex
+" Set netrw to use normal cursor
+let g:netrw_cursor = 0
