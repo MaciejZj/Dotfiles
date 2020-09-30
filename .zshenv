@@ -27,10 +27,6 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 # Disable less history
 export LESSHISTFILE=/dev/null
 
-# Fzf fuzzy finder defults
-export FZF_DEFAULT_OPTS='--color=16 --reverse --multi 
---bind "alt-enter:toggle+down,alt-bspace:toggle+up,tab:down,btab:up"'
-
 # Aliases
 # Aliases for ls
 alias l='ls -h'
