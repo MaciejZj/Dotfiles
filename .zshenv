@@ -16,8 +16,6 @@ export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=1
 # Colors for Linux programs
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
-# Enable colors for grep
-alias grep='grep --color=auto'
 # Enable colors for man pages
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
@@ -34,18 +32,17 @@ export FZF_DEFAULT_OPTS='--color=16 --reverse --multi
 --bind "alt-enter:toggle+down,alt-bspace:toggle+up,tab:down,btab:up"'
 
 # Aliases
-# Exa, installed with: brew install exa
-alias l='exa --icons'
-alias la='exa --icons -a'
-alias lt='exa --icons --tree'
-alias ll='exa --long --group --git --icons'
-alias lla='exa --long --group --git --icons -a'
 # Aliases for ls
-alias ls='ls -h'
+alias l='ls -h'
+alias la='ls -ah'
+alias ll='exa -hl'
+alias lla='exa -ahl'
 # Aliases for cp and mv
 # Prompt for confirmation when overwriting files
 alias cp='cp -i'
 alias mv='mv -i'
+# Enable colors for grep
+alias grep='grep --color=auto'
 # Aliases for Bigger, installed from: https://github.com/MaciejZj/Bigger
 alias sc='bigger.py c'
 alias ss='bigger.py s'
