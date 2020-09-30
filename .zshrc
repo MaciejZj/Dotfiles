@@ -13,9 +13,9 @@ setopt autopushd
 setopt pushdminus
 # Push silently
 setopt pushdsilent
-# Push without argumetns pushes current dir instead of swapping order
+# Push without arguments pushes current dir instead of swapping order
 setopt pushdtohome
-# Dir hisotory alias
+# Dir history alias
 alias dh='dirs -v'
 
 # Autocompletion
@@ -40,6 +40,5 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Disable underline in syntax highlighting
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Fzf extensions
+source ~/.fzf.zsh
