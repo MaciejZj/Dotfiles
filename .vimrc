@@ -105,16 +105,9 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 " Disable gutteer signs for LSP diagnostics
-let g:lsp_signs_enabled=0 
-
-" Colorscheme
-colorscheme dim
-" Colorscheme fixes
-" Underline matching parens instead of highlighting
-highlight MatchParen cterm=underline ctermbg=none
-
-" Make gitgutter signs have matching backgrounds
-let g:gitgutter_set_sign_backgrounds=1
+let g:lsp_signs_enabled=0
+" Make LSP refernce highlight work as underline
+highlight lspReference cterm=underline
 
 " Fzf bindings
 nnoremap <leader>ff :Files<CR>
@@ -122,3 +115,12 @@ nnoremap <leader>fg :GFiles<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fl :BLines<CR>
 nnoremap <leader>fc :Commands<CR>
+
+" Make gitgutter signs have matching backgrounds
+let g:gitgutter_set_sign_backgrounds=1
+
+" Colorscheme
+colorscheme dim
+" Colorscheme fixes
+" Underline matching parens instead of highlighting
+highlight MatchParen cterm=underline ctermbg=none
