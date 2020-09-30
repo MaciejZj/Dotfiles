@@ -85,6 +85,14 @@ if executable('clangd')
         \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp'],
         \ })
 endif
+" Register Latex server
+if executable('texlab')
+   au User lsp_setup call lsp#register_server({
+      \ 'name': 'texlab',
+      \ 'cmd': {server_info->['texlab']},
+      \ 'whitelist': ['tex', 'bib', 'sty'],
+      \ })
+endif
 " Set LSP specific bindings and call them if LSP is enabled
 function! s:on_lsp_buffer_enabled() abort
     setlocal tagfunc=lsp#tagfunc 
