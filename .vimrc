@@ -93,6 +93,10 @@ if executable('texlab')
       \ 'whitelist': ['tex', 'bib', 'sty'],
       \ })
 endif
+" Enable tab completion navigation
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 " Set LSP specific bindings and call them if LSP is enabled
 function! s:on_lsp_buffer_enabled() abort
     setlocal tagfunc=lsp#tagfunc 
