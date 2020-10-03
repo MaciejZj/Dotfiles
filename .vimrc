@@ -100,17 +100,17 @@ inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 " Set LSP specific bindings and call them if LSP is enabled
 function! s:on_lsp_buffer_enabled() abort
     setlocal tagfunc=lsp#tagfunc 
-    nnoremap <Leader>ldc <plug>(lsp-declaration)
-    nnoremap <Leader>ldf <plug>(lsp-definition)
-    nnoremap <Leader>lg <plug>(Lsp-document-diagnostics)
-    nnoremap <Leader>lf <plug>(lsp-document-format)
-    nnoremap <Leader>lrf <plug>(lsp-document-range-format)
-    nnoremap <Leader>ls <plug>(lsp-document-symbol)
-    nnoremap <Leader>lh <plug>(lsp-hover)
-    nnoremap <Leader>lpdc <plug>(lsp-peek-declaration)
-    nnoremap <Leader>lpdf <plug>(lsp-peek-definition)
-    nnoremap <Leader>lrf <plug>(lsp-references)
-    nnoremap <Leader>lrr <plug>(lsp-rename)
+    nnoremap <Leader>ldc :LspDeclaration<CR>
+    nnoremap <Leader>ldf :LspDefinition<CR>
+    nnoremap <Leader>lg :LspDocumentDiagnostics<CR>
+    nnoremap <Leader>lf :LspDocumentFormat<CR>
+    nnoremap <Leader>lrf :LspDocumentRangeFormat<CR>
+    nnoremap <Leader>ls :LspDocumentSymbol<CR>
+    nnoremap <Leader>lh :LspHover<CR>
+    nnoremap <Leader>lpdc :LspPeekDeclaration<CR>
+    nnoremap <Leader>lpdf :LspPeekDefinition<CR>
+    nnoremap <Leader>lrf :LspReferences<CR>
+    nnoremap <Leader>lrr :LspRename<CR>
 endfunction
 augroup lsp_install
     autocmd!
