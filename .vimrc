@@ -31,7 +31,7 @@ set hlsearch
 set incsearch
 
 " Connect system clipboard and unnamed register
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " More frequent updatetime, makes gutter updates more instant
 set updatetime=100
