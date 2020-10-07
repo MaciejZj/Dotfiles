@@ -34,7 +34,11 @@ set incsearch
 set smartcase
 
 " Connect system clipboard and unnamed register
-set clipboard=unnamedplus
+if has('macunix')
+   set clipboard=unnamed
+else
+   set clipboard=unnamedplus
+endif
 
 " More frequent updatetime, makes gutter updates more instant
 set updatetime=100
