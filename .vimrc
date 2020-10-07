@@ -30,6 +30,9 @@ set hlsearch
 " Highlight searching while typing
 set incsearch
 
+" Be case insensitive for small caps, sensitive otherwise
+set smartcase
+
 " Connect system clipboard and unnamed register
 set clipboard=unnamedplus
 
