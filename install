@@ -25,7 +25,7 @@ darwin*)
 	# Install homebrew
 	echo -e "${BLUE}==> Installing brew${NOCOLOR}"
 	if ! [ -x "`command -v brew`" ]; then
-		/usr/bin/ruby -e "`curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install`"
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 		if [ $? -ne 0 ]; then
 			echo -e "${RED}Failed to install homebrew, config install abandoned${NOCOLOR}"
 		fi
