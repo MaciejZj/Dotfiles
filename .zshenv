@@ -33,7 +33,7 @@ alias pip='pip3'
 case ${OSTYPE} in
 darwin*)
 	# Add user's Python modules to PATH
-  export PATH="$PATH:/Users/$USER/Library/Python/3.8/bin"
+	export PATH="$PATH:/Users/$USER/Library/Python/3.8/bin"
 
 	# Aliases for ls
 	alias l='ls -h'
@@ -50,7 +50,7 @@ darwin*)
 	alias sb='bigger.py b'
 linux-gnu)
 	# Add user's Python modules to PATH
-  export PATH="$PATH:/home/$USER/.local/bin"
+	export PATH="$PATH:/home/$USER/.local/bin"
 
 	# Aliases for ls
 	alias l='ls -h --color=auto'
