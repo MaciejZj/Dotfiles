@@ -58,10 +58,6 @@ linux-gnu)
 	;;
 esac
 
-# Install pip
-echo -e "${BLUE}==> Installing pip${NOCOLOR}"
-python get-pip.py
-
 # Install zsh prompt
 echo -e "${BLUE}==> Installing pure prompt${NOCOLOR}"
 mkdir -p "$HOME/.zsh"
@@ -70,8 +66,7 @@ if [ $? -ne 0 ]; then
 	echo -e "${RED}Failed to install pure prompt, config will proceed${NOCOLOR}"
 fi
 
-# Install Vundle vim plugin manager
-# Vundle doesnt need reinstall prompt since it updates itself with vim
+# Install Plug vim plugin manager
 echo -e "${BLUE}==> Installing plug{NOCOLOR}"
 if ! [ -d ~/.vim/plugged ]; then
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -85,11 +80,9 @@ else
 	echo "Plug already installed, skipping"
 fi
 
-# Install vim
+# Install vim packages
 echo -e "${BLUE}==> Installing vim plugins${NOCOLOR}"
 vim +PlugInstall +qall
-# Copy my airline theme to themes dir
-cp -f clear_dim.vim ~/.vim/plugged/vim-airline-themes/autoload/airline/themes/
 
 # Install tmux
 echo -e "${BLUE}==> Installing tmux-themepack${NOCOLOR}"
@@ -103,8 +96,7 @@ else
 	echo "Tmux-themepack already installed, skipping"
 fi
 
-
-
+# Install Python modules
 echo -e "${BLUE}==> Installing pip packages${NOCOLOR}"
 pip3 install -r requirements.txt
 
