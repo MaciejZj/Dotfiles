@@ -6,5 +6,8 @@ pandas
 pytest
 scikit-image
 scikit-learn
+keras
+torch
+torchvision
 venv
 wheel
