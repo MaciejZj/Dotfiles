@@ -3,7 +3,11 @@ compiledb
 matplotlib
 numpy
 pandas
+pydocstyle
+pyflakes
+python-language-server
 pytest
+rope
 scikit-image
 scikit-learn
 keras
