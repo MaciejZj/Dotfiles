@@ -31,6 +31,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Plugins
 # Prompt theme Pure, installed from: https://github.com/sindresorhus/pure
+fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
 # Fish like autosuggestion plugin, installed from: https://github.com/zsh-users/zsh-autosuggestions
