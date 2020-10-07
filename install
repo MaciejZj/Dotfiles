@@ -1,111 +1,111 @@
-	#!/bin/bash
-	# Note that currently this config uses only dotfiles that are defaultly
-	# stored in home dir, if in the future there are any that should be stored
-	# in .config folder this requires modification.
+#!/bin/bash
+# Note that currently this config uses only dotfiles that are defaultly
+# stored in home dir, if in the future there are any that should be stored
+# in .config folder this requires modification.
 
-	GREEN='\033[1;32m'
-	RED='\033[1;31m'
-	BLUE='\033[1m\033[34m'
-	NOCOLOR='\033[0m'
+GREEN='\033[1;32m'
+RED='\033[1;31m'
+BLUE='\033[1m\033[34m'
+NOCOLOR='\033[0m'
 
-	# Grab all dotfiles in this folder
-	echo -e "${BLUE}==> Deploying dotfiles${NOCOLOR}"
-	dotfiles=`ls -a | grep -e "^\.\w+" | grep -e -v "git"`
+# Grab all dotfiles in this folder
+echo -e "${BLUE}==> Deploying dotfiles${NOCOLOR}"
+dotfiles=`ls -a | grep -e "^\.\w+" | grep -e -v "git"`
 
-	# Link dotfiles to home dir
-	for file in $dotfiles; do
-		ln -sf "${PWD}/${file}" ~/"${file}"
-	done
+# Link dotfiles to home dir
+for file in $dotfiles; do
+	ln -sf "${PWD}/${file}" ~/"${file}"
+done
 
-	# Dectect if system is Mac
-	case ${OSTYPE} in
-	darwin*)
-		echo -e "${GREEN}MacOS detected${NOCOLOR}"
+# Dectect if system is Mac
+case ${OSTYPE} in
+darwin*)
+	echo -e "${GREEN}MacOS detected${NOCOLOR}"
 
-		# Install homebrew
-		echo -e "${BLUE}==> Installing brew${NOCOLOR}"
-		if ! [ -x "`command -v brew`" ]; then
-			/usr/bin/ruby -e "`curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install`"
-			if [ $? -ne 0 ]; then
-				echo -e "${RED}Failed to install homebrew, config install abandoned${NOCOLOR}"
-			fi
-		else
-			echo "Homebrew installed already, skipping"
-		fi
-
-		# Install homebrew programs from brewfile
-		echo -e "${BLUE}==> Installing brew formulas${NOCOLOR}"
-		brew bundle --file=${PWD}/brewfile
-
-		# Install fzf extensions (with completion, without keybindings)
-		echo -e "${BLUE}==> Installing fzf shell extensions${NOCOLOR}"
-		echo "y\nn\nn\n" | /usr/local/opt/fzf/install
-
-		echo -e "${BLUE}==> Installing bigger${NOCOLOR}"
-		# Install Bigger
-		curl -fsSL https://raw.githubusercontent.com/maciejzj/bigger/master/bigger.py > ./bigger.py \
-			&& sudo install ./bigger.py /usr/local/bin && rm ./bigger.py
+	# Install homebrew
+	echo -e "${BLUE}==> Installing brew${NOCOLOR}"
+	if ! [ -x "`command -v brew`" ]; then
+		/usr/bin/ruby -e "`curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install`"
 		if [ $? -ne 0 ]; then
-			echo -e "${RED}Failed to install bigger, config will proceed${NOCOLOR}"
+			echo -e "${RED}Failed to install homebrew, config install abandoned${NOCOLOR}"
 		fi
-		;;
-	linux-gnu)
-		echo -e "${GREEN}Linux detected${NOCOLOR}"
-		;;
-	*)
-		echo -e "${RED}Did not detect compatible OS, config install abandoned${NOCOLOR}"
-		exit 1
-		;;
-	esac
+	else
+		echo "Homebrew installed already, skipping"
+	fi
 
-	# Install pip
-	echo -e "${BLUE}==> Installing pip${NOCOLOR}"
-	python get-pip.py
+	# Install homebrew programs from brewfile
+	echo -e "${BLUE}==> Installing brew formulas${NOCOLOR}"
+	brew bundle --file=${PWD}/brewfile
 
-	# Install zsh prompt
-	echo -e "${BLUE}==> Installing pure prompt${NOCOLOR}"
-	mkdir -p "$HOME/.zsh"
-	git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+	# Install fzf extensions (with completion, without keybindings)
+	echo -e "${BLUE}==> Installing fzf shell extensions${NOCOLOR}"
+	echo "y\nn\nn\n" | /usr/local/opt/fzf/install
+
+	echo -e "${BLUE}==> Installing bigger${NOCOLOR}"
+	# Install Bigger
+	curl -fsSL https://raw.githubusercontent.com/maciejzj/bigger/master/bigger.py > ./bigger.py \
+		&& sudo install ./bigger.py /usr/local/bin && rm ./bigger.py
 	if [ $? -ne 0 ]; then
-		echo -e "${RED}Failed to install pure prompt, config will proceed${NOCOLOR}"
+		echo -e "${RED}Failed to install bigger, config will proceed${NOCOLOR}"
 	fi
+	;;
+linux-gnu)
+	echo -e "${GREEN}Linux detected${NOCOLOR}"
+	;;
+*)
+	echo -e "${RED}Did not detect compatible OS, config install abandoned${NOCOLOR}"
+	exit 1
+	;;
+esac
 
-	# Install Vundle vim plugin manager
-	# Vundle doesnt need reinstall prompt since it updates itself with vim
-	echo -e "${BLUE}==> Installing plug{NOCOLOR}"
-	if ! [ -d ~/.vim/plugged ]; then
-		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		if [ $? -ne 0 ]; then
-			echo -e "${RED}Failed to install plug, config install abandoned${NOCOLOR}"
-			exit 1
-		fi
-		echo -e "${GREEN}Plug installed successfully${NOCOLOR}"
-	else
-		echo "Plug already installed, skipping"
+# Install pip
+echo -e "${BLUE}==> Installing pip${NOCOLOR}"
+python get-pip.py
+
+# Install zsh prompt
+echo -e "${BLUE}==> Installing pure prompt${NOCOLOR}"
+mkdir -p "$HOME/.zsh"
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+if [ $? -ne 0 ]; then
+	echo -e "${RED}Failed to install pure prompt, config will proceed${NOCOLOR}"
+fi
+
+# Install Vundle vim plugin manager
+# Vundle doesnt need reinstall prompt since it updates itself with vim
+echo -e "${BLUE}==> Installing plug{NOCOLOR}"
+if ! [ -d ~/.vim/plugged ]; then
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	if [ $? -ne 0 ]; then
+		echo -e "${RED}Failed to install plug, config install abandoned${NOCOLOR}"
+		exit 1
 	fi
+	echo -e "${GREEN}Plug installed successfully${NOCOLOR}"
+else
+	echo "Plug already installed, skipping"
+fi
 
-	# Install vim
-	echo -e "${BLUE}==> Installing vim plugins${NOCOLOR}"
-	vim +PlugInstall +qall
-	# Copy my airline theme to themes dir
-	cp -f clear_dim.vim ~/.vim/plugged/vim-airline-themes/autoload/airline/themes/
+# Install vim
+echo -e "${BLUE}==> Installing vim plugins${NOCOLOR}"
+vim +PlugInstall +qall
+# Copy my airline theme to themes dir
+cp -f clear_dim.vim ~/.vim/plugged/vim-airline-themes/autoload/airline/themes/
 
-	# Install tmux
-	echo -e "${BLUE}==> Installing tmux-themepack${NOCOLOR}"
-	if ! [ -d ~/.tmux-themepack ]; then
-		git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
-		if [ $? -ne 0 ]; then
-			echo -e "${RED}Failed to install vundle, config will proceed${NOCOLOR}"
-		fi
-		echo -e "${GREEN}Tmux-themepack installed successfully${NOCOLOR}"
-	else
-		echo "Tmux-themepack already installed, skipping"
+# Install tmux
+echo -e "${BLUE}==> Installing tmux-themepack${NOCOLOR}"
+if ! [ -d ~/.tmux-themepack ]; then
+	git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
+	if [ $? -ne 0 ]; then
+		echo -e "${RED}Failed to install vundle, config will proceed${NOCOLOR}"
 	fi
+	echo -e "${GREEN}Tmux-themepack installed successfully${NOCOLOR}"
+else
+	echo "Tmux-themepack already installed, skipping"
+fi
 
 
 
-	echo -e "${BLUE}==> Installing pip packages${NOCOLOR}"
-	pip3 install -r requirements.txt
+echo -e "${BLUE}==> Installing pip packages${NOCOLOR}"
+pip3 install -r requirements.txt
 
-	echo -e "${GREEN}Config finished${NOCOLOR}"
+echo -e "${GREEN}Config finished${NOCOLOR}"
