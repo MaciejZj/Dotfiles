@@ -13,8 +13,6 @@ brew "watch"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 
-cask "docker"
-cask "font-sf-mono-nerd-font"
 cask "fork"
 cask "iina"
 cask "imageoptim"
