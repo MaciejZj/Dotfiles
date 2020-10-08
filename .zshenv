@@ -32,8 +32,12 @@ alias pip='pip3'
 
 case ${OSTYPE} in
 darwin*)
+	# Add local sbin to PATH as brew requests
+	export PATH="/usr/local/sbin:$PATH"
 	# Add user's Python modules to PATH
 	export PATH="$PATH:/Users/$USER/Library/Python/3.8/bin"
+	# Add brew llvm to PATH
+	export PATH="$PATH:/usr/local/opt/llvm/bin"
 
 	# Aliases for ls
 	alias l='ls -h'
@@ -48,6 +52,7 @@ darwin*)
 	alias ss='bigger.py s'
 	alias sm='bigger.py m'
 	alias sb='bigger.py b'
+	;;
 linux-gnu)
 	# Add user's Python modules to PATH
 	export PATH="$PATH:/home/$USER/.local/bin"
@@ -61,4 +66,5 @@ linux-gnu)
 	# Commands for xorg programms
 	# Start mupdf in inverted colors mode
 	mupdf="mupdf -I"
+	;;
 esac
