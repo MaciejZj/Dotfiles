@@ -13,5 +13,5 @@ scikit-learn
 keras
 torch
 torchvision
-venv
+virtualenv
 wheel
