@@ -37,10 +37,6 @@ darwin*)
 	echo -e "${BLUE}==> Installing brew formulas${NOCOLOR}"
 	brew bundle --file=${PWD}/brewfile
 
-	# Install fzf extensions (with completion, without keybindings)
-	echo -e "${BLUE}==> Installing fzf shell extensions${NOCOLOR}"
-	echo "y\nn\nn\n" | /usr/local/opt/fzf/install
-
 	echo -e "${BLUE}==> Installing bigger${NOCOLOR}"
 	# Install Bigger
 	curl -fsSL https://raw.githubusercontent.com/maciejzj/bigger/master/bigger.py > ./bigger.py \

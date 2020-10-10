@@ -37,14 +37,14 @@ case ${OSTYPE} in
 darwin*)
 	source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	source /usr/local/opt/fzf/shell/completion.zsh
 	;;
 linux-gnu)
 	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	source /usr/share/fzf/completion.zsh
 	;;
 esac
 # Disable underline in syntax highlighting
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
-# Fzf extensions
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
