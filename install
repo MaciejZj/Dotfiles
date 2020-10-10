@@ -50,6 +50,15 @@ darwin*)
 	;;
 linux-gnu)
 	echo -e "${GREEN}Linux detected${NOCOLOR}"
+
+	# Grab Linux specific dotfiles
+	cd linux
+	dotfiles=`git ls-tree --name-only master | grep -E "^.\w+" | grep -v .git`
+	# Link dotfiles to home dir
+	for file in $dotfiles; do
+		ln -sf "${PWD}/${file}" ~/"${file}"
+	done
+	cd -
 	;;
 *)
 	echo -e "${RED}Did not detect compatible OS, config install abandoned${NOCOLOR}"
