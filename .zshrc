@@ -30,14 +30,19 @@ compinit
 COMPLETION_WAITING_DOTS="true"
 
 # Plugins
-# Prompt theme Pure, installed from: https://github.com/sindresorhus/pure
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
-# Fish like autosuggestion plugin, installed from: https://github.com/zsh-users/zsh-autosuggestions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# Fish like syntax coloring plugin, installed from: https://github.com/zsh-users/zsh-syntax-highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+case ${OSTYPE} in
+darwin*)
+	source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	;;
+linux-gnu)
+	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	;;
+esac
 # Disable underline in syntax highlighting
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
