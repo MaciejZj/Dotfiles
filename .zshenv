@@ -58,6 +58,7 @@ linux-gnu)
 	export PATH="$PATH:/home/$USER/.local/bin"
 
 	# Aliases for ls
+	alias ls='ls --color=auto'
 	alias l='ls -h --color=auto'
 	alias la='ls -ah --color=auto'
 	alias ll='ls -hl --color=auto'
