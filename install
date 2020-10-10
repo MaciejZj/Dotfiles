@@ -10,7 +10,7 @@ NOCOLOR='\033[0m'
 
 # Grab all dotfiles in this folder
 echo -e "${BLUE}==> Deploying dotfiles${NOCOLOR}"
-dotfiles=`ls -a | grep -e "^\.\w+" | grep -e -v "git"`
+dotfiles=`git ls-tree --name-only master | grep -E "^\.\w+" | grep -v .git`
 
 # Link dotfiles to home dir
 for file in $dotfiles; do
@@ -48,6 +48,9 @@ darwin*)
 	if [ $? -ne 0 ]; then
 		echo -e "${RED}Failed to install bigger, config will proceed${NOCOLOR}"
 	fi
+
+	# Silence lastlogin... message
+	touch $HOME/.hushlogin
 	;;
 linux-gnu)
 	echo -e "${GREEN}Linux detected${NOCOLOR}"
