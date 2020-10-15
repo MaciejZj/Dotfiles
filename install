@@ -51,7 +51,11 @@ darwin*)
 linux-gnu)
 	echo -e "${GREEN}Linux detected${NOCOLOR}"
 
+	echo -e "${GREEN}Instaling pacman pkgs${NOCOLOR}"
+	sudo pacman -S --noconfirm < pkg-list.txt
+
 	# Grab Linux specific dotfiles
+	echo -e "${BLUE}==> Deploying Linux specific dotfiles${NOCOLOR}"
 	cd linux
 	dotfiles=`git ls-tree --name-only master | grep -E "^.\w+" | grep -v .git`
 	# Link dotfiles to home dir
