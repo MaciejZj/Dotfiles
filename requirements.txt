@@ -1,5 +1,6 @@
 argparse
 compiledb
+dvc
 matplotlib
 numpy
 pandas
@@ -11,6 +12,7 @@ rope
 scikit-image
 scikit-learn
 keras
+tensorflow
 torch
 torchvision
 virtualenv
