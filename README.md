@@ -1,20 +1,17 @@
 # My dotfiles
 My config with a simple installation script.
+Works on MacOS and Arch Linux.
+Should be easily portable to all Linux distros (and maybe BSDs).
 
-![demo_screenshot](https://i.imgur.com/Iw3fkBN.png)
+![demo_screenshot](https://github.com/maciejzj/dotfiles/blob/master/screen.png?raw=true)
 
-Primarily focused around zsh, tmux and vim.
-Autodeploying on MacOS and Ubuntu with apps installation, planning to add Arch support to the installation script.
-Crafted to make terminal apps use 16 ANSI colors, so the theme stays consistent and is easy to modify from one place.
+Focused on zsh, tmux and vim.
+Comes with features like zsh syntax coloring, autosuggestion, vim autocompletion
+with many LSP options, nice tmux bindings, theming, fzf integration and much
+more.
+Crafted to make terminal apps use 16 ANSI colors, so the theme stays consistent
+and is easy to modify from one place.
+Includes some minimalist xorg programs and config.
 
-Zsh plugins:
-  * [pure prompt](https://github.com/sindresorhus/pure)
-  * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-  * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-
-Vim pugins:
-  * [dim colorscheme](https://github.com/jeffkreeftmeijer/vim-dim)
-  * [airline](https://github.com/vim-airline/vim-airline)
-  * [gitgutter](https://github.com/airblade/vim-gitgutter)
-  * [rainbow](https://github.com/luochen1990/rainbow)
-  * [polyglot](https://github.com/sheerun/vim-polyglot)
+On Linux it is best to use the dotfiles with my 
+[suckless builds](https://github.com/maciejzj/suckless-builds).
