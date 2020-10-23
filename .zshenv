@@ -24,8 +24,8 @@ export LESSHISTFILE=/dev/null
 # Prompt for confirmation when overwriting files
 alias cp='cp -i'
 alias mv='mv -i'
-# Enable line numbering and colors for grep
-alias grep='grep -n --color=auto'
+# Enable colors for grep
+alias grep='grep --color=auto'
 
 alias python='python3'
 alias pip='pip3'
