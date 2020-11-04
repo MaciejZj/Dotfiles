@@ -16,6 +16,7 @@ brew "watch"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 
+cask "coderunner"
 cask "docker"
 cask "fork"
 cask "iina"
