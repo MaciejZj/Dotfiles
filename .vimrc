@@ -31,6 +31,7 @@ set hlsearch
 set incsearch
 
 " Be case insensitive for small caps, sensitive otherwise
+set ignorecase
 set smartcase
 
 " Connect system clipboard and unnamed register
@@ -125,7 +126,7 @@ augroup lsp_install
 augroup END
 " Disable gutteer signs for LSP diagnostics
 let g:lsp_signs_enabled=0
-" Make LSP refernce highlight work as underline
+" Make LSP reference highlight work as underline
 highlight lspReference cterm=underline
 
 " Fzf bindings
@@ -140,6 +141,6 @@ let g:gitgutter_set_sign_backgrounds=1
 
 " Colorscheme
 colorscheme dim
-" Colorscheme fixes
-" Underline matching parens instead of highlighting
-highlight MatchParen cterm=underline ctermbg=none
+
+" Fix invisible fzf border
+let g:fzf_colors = { 'border':  ['fg', 'Ignore'], }
