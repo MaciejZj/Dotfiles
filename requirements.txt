@@ -1,11 +1,14 @@
 argparse
 compiledb
+dash
 dvc
 keras
 matplotlib
 mlflow
 numpy
 pandas
+plotly
+pycodestyle
 pydocstyle
 pyflakes
 pytest

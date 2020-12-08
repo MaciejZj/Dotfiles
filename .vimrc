@@ -41,6 +41,9 @@ else
    set clipboard=unnamedplus
 endif
 
+" Keys behaviour
+set backspace=indent,eol,start
+
 " More frequent updatetime, makes gutter updates more instant
 set updatetime=100
 
@@ -135,6 +138,9 @@ nnoremap <leader>fg :GFiles<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fl :BLines<CR>
 nnoremap <leader>fc :Commands<CR>
+
+" Other bindings
+nnoremap <Leader>n :nohlsearch<CR>
 
 " Make gitgutter signs have matching backgrounds
 let g:gitgutter_set_sign_backgrounds=1
