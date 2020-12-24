@@ -4,7 +4,7 @@ export LANG=en_US.UTF-8
 
 # Set history length
 HISTFILE=~/.zhistory
-HISTSIZE=SAVEHIST=10000
+HISTSIZE=SAVEHIST=100000
 setopt sharehistory
 setopt extendedhistory
 
