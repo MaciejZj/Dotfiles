@@ -7,6 +7,7 @@ matplotlib
 mlflow
 numpy
 pandas
+pigar
 plotly
 pycodestyle
 pydocstyle
