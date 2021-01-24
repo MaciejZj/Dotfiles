@@ -33,16 +33,22 @@ COMPLETION_WAITING_DOTS="true"
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
-case ${OSTYPE} in
+case $OSTYPE in
 darwin*)
 	source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	source /usr/local/opt/fzf/shell/completion.zsh
 	;;
 linux-gnu)
-	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	source /usr/share/fzf/completion.zsh
+	if [ $TERM = linux ]; then
+		# Enabled only in bare tty
+		PURE_PROMPT_SYMBOL=">"
+	else
+		# Enabled only in terminal emulators
+		source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+	fi
 	;;
 esac
 # Disable underline in syntax highlighting
