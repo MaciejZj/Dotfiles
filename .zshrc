@@ -18,6 +18,10 @@ setopt pushdtohome
 # Dir history alias
 alias dh='dirs -v'
 
+# Make ctrl+u work like in other shells (delete from cursor to beginning
+# of the line, instead of deleting the whole line)
+bindkey \^U backward-kill-line
+
 # Autocompletion
 # Enble colors in zsh completion
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
