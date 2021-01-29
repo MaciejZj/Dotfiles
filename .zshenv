@@ -21,12 +21,18 @@ export FZF_DEFAULT_OPTS='--color=16'
 export LESSHISTFILE=/dev/null
 
 # Aliases
+# Aliases are here and not in the .zshrc, because only .zshenv
+# is sourced by the shell invoked through vim's '!' external command.
 # Prompt for confirmation when overwriting files
 alias cp='cp -i'
 alias mv='mv -i'
 # Enable colors for grep
 alias grep='grep --color=auto'
-
+# Pygmentize coloring
+alias pyg='pygmentize -f terminal'
+# Dir history alias
+alias dh='dirs -v'
+# Make sure python is python3
 alias python='python3'
 alias pip='pip3'
 

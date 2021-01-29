@@ -15,12 +15,14 @@ setopt pushdminus
 setopt pushdsilent
 # Push without arguments pushes current dir instead of swapping order
 setopt pushdtohome
-# Dir history alias
-alias dh='dirs -v'
 
 # Make ctrl+u work like in other shells (delete from cursor to beginning
 # of the line, instead of deleting the whole line)
 bindkey \^U backward-kill-line
+# Make ctrl+ze work like in other shells (edit current command in editor)
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
 
 # Autocompletion
 # Enble colors in zsh completion
