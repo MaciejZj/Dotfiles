@@ -44,6 +44,8 @@ darwin*)
 	export PATH="$PATH:/Users/$USER/Library/Python/3.8/bin"
 	# Add brew llvm to PATH
 	export PATH="$PATH:/usr/local/opt/llvm/bin"
+	# Disable MacOS shell state restoration which is annoying with tmux
+	export SHELL_SESSIONS_DISABLE=1
 
 	# Aliases for ls
 	alias l='ls -h'
