@@ -19,6 +19,8 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 export FZF_DEFAULT_OPTS='--color=16'
 # Disable less history
 export LESSHISTFILE=/dev/null
+# Exclude underscore commands from correction suggestions
+CORRECT_IGNORE="[_|.]*"
 
 # Aliases
 # Aliases are here and not in the .zshrc, because only .zshenv
