@@ -138,6 +138,7 @@ nnoremap <leader>fg :GFiles<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fl :BLines<CR>
 nnoremap <leader>fc :Commands<CR>
+nnoremap <leader>g :Rg<CR>
 
 " Other bindings
 nnoremap <Leader>n :nohlsearch<CR>

@@ -15,8 +15,12 @@ export LESS_TERMCAP_me=$'\e[0m'
 export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
-# Make fzf follow 16 ASCI terminal colors
+# Make fzf follow 16 ANSI terminal colors
 export FZF_DEFAULT_OPTS='--color=16'
+# Make bat use 16 ANSI terminal colors
+export BAT_THEME='ansi'
+# Bat customization
+export BAT_STYLE="changes,numbers,snip"
 # Disable less history
 export LESSHISTFILE=/dev/null
 # Exclude underscore commands from correction suggestions
