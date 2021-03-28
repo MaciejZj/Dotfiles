@@ -34,6 +34,9 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Use indentation base folding
+set foldmethod=syntax
+
 " Connect system clipboard and unnamed register
 if has('macunix')
    set clipboard=unnamed
@@ -128,7 +131,7 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 " Disable gutteer signs for LSP diagnostics
-let g:lsp_signs_enabled=0
+let g:lsp_diagnostics_signs_enabled=0
 " Make LSP reference highlight work as underline
 highlight lspReference cterm=underline
 
