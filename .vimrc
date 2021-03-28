@@ -34,8 +34,10 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Use indentation base folding
-set foldmethod=syntax
+" Use indentation base folding, don't open with folds, limit fold nesting
+set foldmethod=indent
+set foldlevel=99
+set foldnestmax=3
 
 " Connect system clipboard and unnamed register
 if has('macunix')
