@@ -1,9 +1,42 @@
+" Plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'maciejzj/vim-theme'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sleuth'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+
+call plug#end()
+
+" Configuration
+
 " Indentation
+" If not using sleuth use tab indentation with width of four spaces
 set tabstop=4
 set shiftwidth=4
+" Automatic indentation
 set autoindent
 set smartindent
 filetype plugin indent on
+
+" Folding
+" Use folding based on text indentation
+set foldmethod=indent
+" Limit folding level
+set foldnestmax=3
+" Open files with all folds open
+set nofoldenable
+
+" Searching
+" Be case insensitive for small caps, sensitive otherwise
+set ignorecase
+set smartcase
 
 " Interface
 " Display cursor position in file
@@ -22,23 +55,19 @@ set fillchars+=vert:\│
 set splitbelow
 set splitright
 
-" Colors
+" Colors and highlights
 " Enable syntax highlighting
 syntax on
 " Highlight search results
 set hlsearch
 " Highlight searching while typing
 set incsearch
+" Colorscheme
+colorscheme dim
 
-" Be case insensitive for small caps, sensitive otherwise
-set ignorecase
-set smartcase
-
-" Use indentation base folding, don't open with folds, limit fold nesting
-set foldmethod=indent
-set foldnestmax=3
-set nofoldenable
-
+" System behaviour
+" More frequent updatetime, makes gutter updates more instant
+set updatetime=100
 " Connect system clipboard and unnamed register
 if has('macunix')
    set clipboard=unnamed
@@ -47,29 +76,8 @@ else
 endif
 
 " Keys behaviour
+" Make backspace work like in other programs
 set backspace=indent,eol,start
-
-" More frequent updatetime, makes gutter updates more instant
-set updatetime=100
-
-" Set space as leader
-let mapleader="\<Space>"
-
-" Plugins
-call plug#begin('~/.vim/plugged')
-
-Plug 'maciejzj/vim-theme'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-sleuth'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/vim-lsp'
-
-call plug#end()
 
 " Plugins configuration
 
@@ -85,7 +93,8 @@ let g:netrw_cursor=0
 
 " External plugins
 
-" LSPs " Register Python server
+" LSPs 
+" Register Python server
 if executable('pyls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'pyls',
@@ -109,7 +118,33 @@ if executable('texlab')
       \ 'whitelist': ['tex', 'bib', 'sty'],
       \ })
 endif
-" Enable tab completion navigation
+" Enable LSP for buffer if server is registered
+augroup lsp_install
+    autocmd!
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+" Disable gutter signs for LSP diagnostics
+let g:lsp_diagnostics_signs_enabled=0
+" Make LSP reference highlight work as underline
+highlight lspReference cterm=underline
+
+" Fzf
+" Fix invisible border
+let g:fzf_colors = { 'border':  ['fg', 'Ignore'], }
+
+" Gitgutter
+" Make gitgutter signs have matching backgrounds
+let g:gitgutter_set_sign_backgrounds=1
+
+" Bindings
+" Set space as leader
+let mapleader="\<Space>"
+" Build-ins
+" Toogle search results highlighting
+nnoremap <Leader>h :hlsearch!<CR>
+" Plugins
+" LSPs
+" Navigate completion popup with tabkey
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
@@ -128,31 +163,11 @@ function! s:on_lsp_buffer_enabled() abort
     nnoremap <Leader>lrf :LspReferences<CR>
     nnoremap <Leader>lrr :LspRename<CR>
 endfunction
-augroup lsp_install
-    autocmd!
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-" Disable gutteer signs for LSP diagnostics
-let g:lsp_diagnostics_signs_enabled=0
-" Make LSP reference highlight work as underline
-highlight lspReference cterm=underline
-
 " Fzf bindings
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :GFiles<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fl :BLines<CR>
 nnoremap <leader>fc :Commands<CR>
+" Ripgrep
 nnoremap <leader>g :Rg<CR>
-
-" Other bindings
-nnoremap <Leader>n :nohlsearch<CR>
-
-" Make gitgutter signs have matching backgrounds
-let g:gitgutter_set_sign_backgrounds=1
-
-" Colorscheme
-colorscheme dim
-
-" Fix invisible fzf border
-let g:fzf_colors = { 'border':  ['fg', 'Ignore'], }
