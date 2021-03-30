@@ -36,8 +36,8 @@ set smartcase
 
 " Use indentation base folding, don't open with folds, limit fold nesting
 set foldmethod=indent
-set foldlevel=99
 set foldnestmax=3
+set nofoldenable
 
 " Connect system clipboard and unnamed register
 if has('macunix')
