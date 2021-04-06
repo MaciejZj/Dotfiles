@@ -141,7 +141,7 @@ let g:gitgutter_set_sign_backgrounds=1
 let mapleader="\<Space>"
 " Build-ins
 " Toogle search results highlighting
-nnoremap <Leader>h :set hlsearch!<CR>
+nnoremap <Leader>s :set hlsearch!<CR>
 " Plugins
 " LSPs
 " Navigate completion popup with tabkey
