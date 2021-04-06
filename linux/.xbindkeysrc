@@ -1,0 +1,5 @@
+"amixer set PCM 2%+"
+  XF86AudioRaiseVolume 
+
+"amixer set PCM 2%-"
+  XF86AudioLowerVolume

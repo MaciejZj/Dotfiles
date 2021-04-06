@@ -33,6 +33,7 @@ openssh
 chromium
 maim
 mpv
+youtube-dl
 mupdf
 sxiv
 thunar
