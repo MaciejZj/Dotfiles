@@ -1,6 +1,10 @@
 # General
+
 # Language
 export LANG=en_US.UTF-8
+
+# Default editor
+export EDITOR=vim
 
 # Set history length
 HISTFILE=~/.zhistory
@@ -23,8 +27,10 @@ export LESSHISTFILE=/dev/null
 CORRECT_IGNORE="[_|.]*"
 
 # Aliases
+
 # Aliases are here and not in the .zshrc, because only .zshenv
 # is sourced by the shell invoked through vim's '!' external command.
+
 # Prompt for confirmation when overwriting files
 alias cp='cp -i'
 alias mv='mv -i'
