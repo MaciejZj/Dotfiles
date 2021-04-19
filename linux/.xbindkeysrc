@@ -1,5 +1,5 @@
-"amixer set PCM 2%+"
+"amixer set PCM 2%+ && dwmbar -u"
   XF86AudioRaiseVolume 
 
-"amixer set PCM 2%-"
+"amixer set PCM 2%- && dwmbar -u"
   XF86AudioLowerVolume
