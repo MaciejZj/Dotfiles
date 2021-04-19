@@ -145,9 +145,11 @@ nnoremap <Leader>s :set hlsearch!<CR>
 " Plugins
 " LSPs
 " Navigate completion popup with tabkey
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+" Refresh completion popup with ctrl+space
+imap <c-@> <Plug>(asyncomplete_force_refresh)
 " Set LSP specific bindings and call them if LSP is enabled
 function! s:on_lsp_buffer_enabled() abort
     setlocal tagfunc=lsp#tagfunc 
