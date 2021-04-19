@@ -4,6 +4,7 @@ ffmpeg
 fzf
 imagemagick
 man
+man-pages
 mlocate
 moreutils
 ripgrep
