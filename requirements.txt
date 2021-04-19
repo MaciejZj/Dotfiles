@@ -2,6 +2,7 @@ argparse
 compiledb
 dash
 dvc
+jupyterlab
 keras
 matplotlib
 mlflow
