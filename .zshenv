@@ -3,9 +3,6 @@
 # Language
 export LANG=en_US.UTF-8
 
-# Default editor
-export EDITOR=vim
-
 # Set history length
 HISTFILE=~/.zhistory
 HISTSIZE=SAVEHIST=100000
