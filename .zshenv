@@ -46,7 +46,7 @@ darwin*)
 	# Add local sbin to PATH as brew requests
 	export PATH="/usr/local/sbin:$PATH"
 	# Add user's Python modules to PATH
-	export PATH="$PATH:/Users/$USER/Library/Python/3.8/bin"
+	export PATH="$PATH:/Users/$USER/Library/Python/3.9/bin"
 	# Add brew llvm to PATH
 	export PATH="$PATH:/usr/local/opt/llvm/bin"
 	# Disable MacOS shell state restoration which is annoying with tmux
