@@ -1,3 +1,4 @@
+autopep8
 compiledb
 dash
 dvc
@@ -15,7 +16,7 @@ pydocstyle
 pyflakes
 pytest
 pytest-mock
-python-language-server
+python-lsp-server
 rope
 scikit-image
 scikit-learn
