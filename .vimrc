@@ -91,14 +91,18 @@ let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
 " Set netrw to use normal cursor
 let g:netrw_cursor=0
 
+" Syntax highlighting
+" Don't show syntax errors for markdown
+highlight markdownError guifg=NONE guibg=NONE
+
 " External plugins
 
 " LSPs 
 " Register Python server
-if executable('pyls')
+if executable('pylsp')
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
+        \ 'name': 'pylsp',
+        \ 'cmd': {server_info->['pylsp']},
         \ 'allowlist': ['python'],
         \ })
 endif
