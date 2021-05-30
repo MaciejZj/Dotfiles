@@ -66,6 +66,8 @@ set incsearch
 colorscheme dim
 
 " System behaviour
+" Autoread file on changes
+set autoread
 " More frequent updatetime, makes gutter updates more instant
 set updatetime=100
 " Connect system clipboard and unnamed register
@@ -78,6 +80,9 @@ endif
 " Keys behaviour
 " Make backspace work like in other programs
 set backspace=indent,eol,start
+
+" Delete comment character when joining commented lines
+set formatoptions+=j 
 
 " Plugins configuration
 
